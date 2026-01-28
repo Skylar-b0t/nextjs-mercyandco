@@ -39,8 +39,8 @@ export default function Navigation() {
                 animate={{ y: 0 }}
                 transition={{ duration: 0.6 }}
                 className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-                        ? 'bg-[#0a0a0a]/90 backdrop-blur-lg border-b border-[#1a1a1a]'
-                        : 'bg-transparent'
+                    ? 'bg-[#0a0a0a]/90 backdrop-blur-lg border-b border-[#1a1a1a]'
+                    : 'bg-transparent'
                     }`}
             >
                 <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -62,8 +62,8 @@ export default function Navigation() {
                                 key={link.name}
                                 href={link.href}
                                 className={`text-sm transition-colors relative group ${isActive(link.href)
-                                        ? 'text-white'
-                                        : 'text-[#a0a0a0] hover:text-white'
+                                    ? 'text-white'
+                                    : 'text-[#a0a0a0] hover:text-white'
                                     }`}
                             >
                                 {link.name}
@@ -71,9 +71,9 @@ export default function Navigation() {
                                     }`} />
                             </Link>
                         ))}
-                        <Link href="/contact" className="btn-primary py-2 px-5 text-sm">
+                        <a href={`${siteConfig.contact.whatsapp}?text=Hi! I'd like to book a photography session.`} target="_blank" rel="noopener noreferrer" className="btn-primary py-2 px-5 text-sm">
                             Book Now
-                        </Link>
+                        </a>
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -137,13 +137,15 @@ export default function Navigation() {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.5 }}
                             >
-                                <Link
-                                    href="/contact"
+                                <a
+                                    href={`${siteConfig.contact.whatsapp}?text=Hi! I'd like to book a photography session.`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                     className="btn-primary mt-4"
                                 >
                                     Book Now
-                                </Link>
+                                </a>
                             </motion.div>
                         </div>
                     </motion.div>

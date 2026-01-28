@@ -14,6 +14,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://mercyphotography.co.uk'),
   title: {
     default: `${siteConfig.name} | Professional Photography`,
     template: `%s | ${siteConfig.name}`,
@@ -26,6 +27,7 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     type: "website",
     locale: "en_GB",
+    url: 'https://mercyphotography.co.uk',
     siteName: siteConfig.name,
   },
   twitter: {

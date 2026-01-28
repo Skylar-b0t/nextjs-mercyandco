@@ -67,6 +67,7 @@ export default function ServicesPage() {
                                         alt={service.title}
                                         fill
                                         className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                        sizes="(max-width: 768px) 100vw, 50vw"
                                     />
                                     {/* Gradient Overlay */}
                                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
@@ -74,14 +75,9 @@ export default function ServicesPage() {
 
                                 {/* Content */}
                                 <div className="absolute bottom-0 left-0 right-0 p-8">
-                                    <div className="flex items-start justify-between mb-4">
-                                        <h3 className="text-2xl font-semibold text-white group-hover:text-[#d4a574] transition-colors">
-                                            {service.title}
-                                        </h3>
-                                        <span className="text-lg font-semibold text-[#d4a574]">
-                                            From {service.startingPrice}
-                                        </span>
-                                    </div>
+                                    <h3 className="text-2xl font-semibold text-white group-hover:text-[#d4a574] transition-colors mb-4">
+                                        {service.title}
+                                    </h3>
                                     <p className="text-[#a0a0a0] mb-4">{service.description}</p>
 
                                     {/* Features */}

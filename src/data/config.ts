@@ -7,9 +7,10 @@ export const siteConfig = {
     description: 'Professional photography that transforms fleeting moments into timeless art. Weddings, events, and life\'s precious celebrations in Dundee, Scotland.',
 
     contact: {
-        email: 'hello@mercyandco.com',
+        email: 'hello@mercyphotography.co.uk',
         phone: '+44 7355 879695',
         whatsapp: 'https://wa.me/447355879695',
+        website: 'https://mercyphotography.co.uk',
         location: 'Dundee, Scotland, UK',
         address: 'City Centre, Dundee DD1',
     },
