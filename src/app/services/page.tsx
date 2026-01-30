@@ -117,10 +117,10 @@ export default function ServicesPage() {
 
                         <div className="grid md:grid-cols-4 gap-8">
                             {[
-                                { step: '01', title: 'Consultation', description: 'Let&apos;s discuss your vision, preferences, and what matters most to you.' },
-                                { step: '02', title: 'Planning', description: 'We&apos;ll create a detailed plan including locations, timeline, and shot list.' },
-                                { step: '03', title: 'The Session', description: 'Relax and enjoy while I capture your precious moments naturally.' },
-                                { step: '04', title: 'Delivery', description: 'Receive your professionally edited photos in a beautiful online gallery.' },
+                                { step: '01', title: 'Consultation', description: 'Let\'s discuss your vision, preferences, and what matters most to you.' },
+                                { step: '02', title: 'Planning', description: 'We\'ll create a detailed plan including locations, timeline, and shot list.' },
+                                { step: '03', title: 'The Shoot', description: 'Relax and be yourself while I capture authentic moments and emotions.' },
+                                { step: '04', title: 'Delivery', description: 'Receive your beautifully edited photos in a private online gallery.' },
                             ].map((item, index) => (
                                 <motion.div
                                     key={item.step}
