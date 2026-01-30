@@ -5,20 +5,22 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { client } from '@/lib/sanity';
 
-// Define the query to fetch photos
+// Define the query to fetch portfolio photos from Sanity
 const GALLERY_QUERY = `
-  *[_type == "eventPhoto"] | order(order asc) {
+  *[_type == "portfolio"] | order(order asc) {
+    _id,
     title,
     "src": image.asset->url,
-    "alt": image.alt,
-    "category": category->title,
-    height
+    "alt": alt,
+    category,
+    height,
+    featured
   }
 `;
 
-// Define the query to fetch categories
+// Get unique categories from portfolio photos
 const CATEGORIES_QUERY = `
-  *[_type == "eventCategory"] | order(title asc).title
+  array::unique(*[_type == "portfolio"].category)
 `;
 
 export const dynamic = 'force-dynamic';
