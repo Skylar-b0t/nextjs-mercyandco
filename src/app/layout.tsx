@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { siteConfig } from "@/data/config";
 
 const inter = Inter({
@@ -52,6 +53,7 @@ export default function RootLayout({
         className={`${inter.variable} ${playfair.variable} antialiased film-grain`}
       >
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );
