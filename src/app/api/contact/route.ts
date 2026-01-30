@@ -3,7 +3,10 @@ import { Resend } from 'resend';
 import { contactFormSchema } from '@/lib/validations/contact';
 import { z } from 'zod';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Initialize Resend only if API key is available (prevents build errors)
+const resend = process.env.RESEND_API_KEY
+  ? new Resend(process.env.RESEND_API_KEY)
+  : null;
 
 // Simple in-memory rate limiting (for production, use Redis/Upstash)
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
@@ -45,6 +48,15 @@ export async function POST(request: NextRequest) {
     // Parse and validate request body
     const body = await request.json();
     const validatedData = contactFormSchema.parse(body);
+
+    // Check if Resend is configured
+    if (!resend) {
+      console.error('RESEND_API_KEY is not configured');
+      return NextResponse.json(
+        { error: 'Email service is not configured. Please contact support.' },
+        { status: 500 }
+      );
+    }
 
     // Send email via Resend
     const { data, error } = await resend.emails.send({
