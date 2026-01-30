@@ -156,10 +156,10 @@ export default function ServicesPage() {
 
                         <div className="space-y-6">
                             {[
-                                { q: 'How far in advance should I book?', a: 'For weddings, I recommend booking 6-12 months ahead. Portrait sessions can often be scheduled within 2-4 weeks.' },
-                                { q: 'How long until I receive my photos?', a: 'Wedding photos are delivered within 4-6 weeks. Portrait sessions are ready in 1-2 weeks.' },
-                                { q: 'Do you travel for destination weddings?', a: 'Absolutely! I love destination work and have photographed weddings across Scotland, the UK, and Europe.' },
-                                { q: 'What&apos;s included in the packages?', a: 'All packages include pre-session consultation, professional editing, and an online gallery. Specific inclusions vary by package.' },
+                                { q: 'What\'s included in your packages?', a: 'Each package includes professional editing, an online gallery, and high-resolution digital files. Premium packages also include prints and albums.' },
+                                { q: 'How far in advance should I book?', a: 'For weddings, I recommend booking 3-4 months ahead. Portrait sessions can often be scheduled within 2-4 weeks.' },
+                                { q: 'Do you travel for shoots?', a: 'Yes! I\'m based in Dundee but regularly travel throughout Scotland and beyond. Travel fees may apply for locations outside the local area.' },
+                                { q: 'What\'s your editing process?', a: 'I carefully edit each photo to enhance its natural beauty while maintaining authenticity. You\'ll receive your gallery within 2-4 weeks of your session.' },
                             ].map((faq, index) => (
                                 <motion.div
                                     key={index}
