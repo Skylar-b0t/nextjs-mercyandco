@@ -1,4 +1,4 @@
-
+import type { Metadata } from "next";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import FeaturedEvents from "@/components/FeaturedEvents";
@@ -12,6 +12,10 @@ import { client } from "@/lib/sanity";
 const CATEGORIES_QUERY = `*[_type == "eventCategory"] { title }`;
 
 export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = {
+  title: "Mercy & Co Photography | Professional Photography in Dundee, Scotland",
+};
 
 async function getEventTypes() {
   const categories = await client.fetch<{ title: string }[]>(CATEGORIES_QUERY);

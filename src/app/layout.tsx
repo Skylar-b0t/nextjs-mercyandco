@@ -23,6 +23,16 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   keywords: ["photography", "wedding photographer", "portrait photography", "professional photographer", "Dundee", "Scotland", "Mercy & Co"],
   authors: [{ name: siteConfig.founder.name }],
+  icons: {
+    icon: [
+      { url: '/icon.png', sizes: 'any' },
+      { url: '/icon.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icon.png', sizes: '16x16', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
   openGraph: {
     title: siteConfig.name,
     description: siteConfig.description,
