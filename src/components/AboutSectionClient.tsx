@@ -4,11 +4,13 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import Image from 'next/image';
 import { siteConfig } from '@/data/config';
+import { urlFor } from '@/lib/sanity';
 
 interface AboutSectionClientProps {
     founderName?: string;
     aboutText?: string;
-    founderImageSrc?: string;
+    founderImage?: any;
+    founderImageSrc?: string; // Keep for fallback/defaults
     stats?: {
         yearsExperience: string;
         happyClients: string;
@@ -21,6 +23,7 @@ interface AboutSectionClientProps {
 export default function AboutSectionClient({
     founderName = siteConfig.founder.name,
     aboutText = siteConfig.founder.bio,
+    founderImage,
     founderImageSrc = "https://images.unsplash.com/photo-1493863641943-9b68992a8d07?q=80&w=2058",
     stats = {
         yearsExperience: siteConfig.stats.yearsExperience,
@@ -80,7 +83,10 @@ export default function AboutSectionClient({
                 >
                     <div className="relative aspect-[4/5] rounded-lg overflow-hidden">
                         <Image
-                            src={founderImageSrc}
+                            src={founderImage
+                                ? urlFor(founderImage).width(800).quality(80).url()
+                                : founderImageSrc
+                            }
                             alt={founderName}
                             fill
                             className="object-cover"

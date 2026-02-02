@@ -5,10 +5,11 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import Lightbox from '@/components/Lightbox';
+import { urlFor } from '@/lib/sanity';
 
 interface GalleryContentProps {
     photos: Array<{
-        src: string;
+        image: any;
         alt: string;
         title: string;
         category: string;
@@ -103,7 +104,7 @@ export default function GalleryContent({ photos, categories }: GalleryContentPro
             >
                 {filteredPhotos.map((photo, index) => (
                     <motion.div
-                        key={photo.src}
+                        key={index}
                         layout
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
@@ -113,7 +114,7 @@ export default function GalleryContent({ photos, categories }: GalleryContentPro
                         onClick={() => openLightbox(index)}
                     >
                         <Image
-                            src={photo.src}
+                            src={urlFor(photo.image).width(800).quality(75).url()}
                             alt={photo.alt}
                             fill
                             className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -141,7 +142,12 @@ export default function GalleryContent({ photos, categories }: GalleryContentPro
             {/* Lightbox */}
             {lightboxOpen && (
                 <Lightbox
-                    images={filteredPhotos.map(p => ({ src: p.src, alt: p.alt, title: p.title, category: p.category }))}
+                    images={filteredPhotos.map(p => ({
+                        src: urlFor(p.image).width(1600).quality(85).url(),
+                        alt: p.alt,
+                        title: p.title,
+                        category: p.category
+                    }))}
                     initialIndex={lightboxIndex}
                     onClose={() => setLightboxOpen(false)}
                 />

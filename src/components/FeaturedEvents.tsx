@@ -5,7 +5,7 @@ import InteractiveGallery, { Photo } from '@/components/InteractiveGallery';
 const EVENTS_QUERY = `
   *[_type == "eventPhoto" && featured == true] | order(order asc) {
     title,
-    "src": image.asset->url,
+    image,
     "alt": image.alt,
     "category": category->title,
     height
@@ -18,12 +18,12 @@ const CATEGORIES_QUERY = `
 `;
 
 export default async function FeaturedEvents() {
-    const photos = await client.fetch<Photo[]>(EVENTS_QUERY);
-    const categoriesData = await client.fetch<string[]>(CATEGORIES_QUERY);
+  const photos = await client.fetch<Photo[]>(EVENTS_QUERY);
+  const categoriesData = await client.fetch<string[]>(CATEGORIES_QUERY);
 
-    // Add 'All' to categories if not present (though usually we handle 'All' in the frontend, 
-    // but the component expects a list of categories to filter by)
-    const categories = ['All', ...categoriesData];
+  // Add 'All' to categories if not present (though usually we handle 'All' in the frontend, 
+  // but the component expects a list of categories to filter by)
+  const categories = ['All', ...categoriesData];
 
-    return <InteractiveGallery photos={photos} categories={categories} />;
+  return <InteractiveGallery photos={photos} categories={categories} />;
 }

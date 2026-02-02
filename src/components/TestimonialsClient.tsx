@@ -3,12 +3,13 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { siteConfig } from '@/data/config';
+import { urlFor } from '@/lib/sanity';
 
 export interface Testimonial {
     name: string;
     quote: string;
     event: string;
-    image: string;
+    image: any;
 }
 
 interface TestimonialsClientProps {
@@ -63,7 +64,10 @@ export default function TestimonialsClient({
                                 {/* Image */}
                                 <div className="relative aspect-square mb-4 overflow-hidden">
                                     <Image
-                                        src={testimonial.image}
+                                        src={typeof testimonial.image === 'string'
+                                            ? testimonial.image
+                                            : urlFor(testimonial.image).width(400).height(400).quality(80).url()
+                                        }
                                         alt={testimonial.name}
                                         fill
                                         className="object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500"

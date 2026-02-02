@@ -6,12 +6,12 @@ const TESTIMONIALS_QUERY = `
     name,
     quote,
     "event": eventType,
-    "image": image.asset->url
+    image
   }
 `;
 
 export default async function Testimonials() {
-    const testimonials = await client.fetch<Testimonial[]>(TESTIMONIALS_QUERY);
+  const testimonials = await client.fetch<Testimonial[]>(TESTIMONIALS_QUERY);
 
-    return <TestimonialsClient testimonials={testimonials.length > 0 ? testimonials : undefined} />;
+  return <TestimonialsClient testimonials={testimonials.length > 0 ? testimonials : undefined} />;
 }

@@ -10,7 +10,7 @@ const GALLERY_QUERY = `
   *[_type == "portfolio"] | order(order asc) {
     _id,
     title,
-    "src": image.asset->url,
+    image,
     "alt": alt,
     category,
     height,

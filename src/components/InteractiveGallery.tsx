@@ -5,9 +5,10 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import Lightbox from './Lightbox';
+import { urlFor } from '@/lib/sanity';
 
 export interface Photo {
-    src: string;
+    image: any;
     alt: string;
     title: string;
     category: string;
@@ -84,7 +85,7 @@ export default function InteractiveGallery({ photos, categories }: InteractiveGa
             >
                 {displayPhotos.map((image, index) => (
                     <motion.div
-                        key={image.src}
+                        key={index}
                         layout
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
@@ -95,7 +96,7 @@ export default function InteractiveGallery({ photos, categories }: InteractiveGa
                         onClick={() => openLightbox(index)}
                     >
                         <Image
-                            src={image.src}
+                            src={urlFor(image.image).width(800).quality(75).url()}
                             alt={image.alt}
                             fill
                             className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -139,7 +140,12 @@ export default function InteractiveGallery({ photos, categories }: InteractiveGa
             {/* Lightbox */}
             {lightboxOpen && (
                 <Lightbox
-                    images={displayPhotos.map(p => ({ src: p.src, alt: p.alt, title: p.title, category: p.category }))}
+                    images={displayPhotos.map(p => ({
+                        src: urlFor(p.image).width(1600).quality(85).url(),
+                        alt: p.alt,
+                        title: p.title,
+                        category: p.category
+                    }))}
                     initialIndex={lightboxIndex}
                     onClose={() => setLightboxOpen(false)}
                 />
